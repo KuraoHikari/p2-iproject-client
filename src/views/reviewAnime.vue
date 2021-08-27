@@ -19,46 +19,23 @@
                 <div class="row">
                   <div class="col-6">
                     <label class="form-check-label">Rate the anime : </label><br />
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" v-model="userpoin" value="1" />
-                      <label class="form-check-label">1</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" v-model="userpoin" value="2" />
-                      <label class="form-check-label">2</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" v-model="userpoin" value="3" />
-                      <label class="form-check-label">3</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" v-model="userpoin" value="4" />
-                      <label class="form-check-label">4</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" v-model="userpoin" value="5" />
-                      <label class="form-check-label">5</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" v-model="userpoin" value="6" />
-                      <label class="form-check-label">6</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" v-model="userpoin" value="7" />
-                      <label class="form-check-label">7</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" v-model="userpoin" value="8" />
-                      <label class="form-check-label">8</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" v-model="userpoin" value="9" />
-                      <label class="form-check-label">9</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" v-model="userpoin" value="10" />
-                      <label class="form-check-label">10</label>
-                    </div>
+                    <fieldset class="rating">
+                      <input type="radio" id="star10" name="rating" value="10" v-model="userpoin" /><label for="star10">10 stars</label> <input type="radio" id="star9" name="rating" value="9" v-model="userpoin" /><label for="star9"
+                        >9 stars</label
+                      >
+                      <input type="radio" id="star8" name="rating" value="8" v-model="userpoin" /><label for="star8">8 stars</label> <input type="radio" id="star7" name="rating" value="7" v-model="userpoin" /><label for="star7"
+                        >7 stars</label
+                      >
+                      <input type="radio" id="star6" name="rating" value="6" v-model="userpoin" /><label for="star6">6 star</label> <input type="radio" id="star5" name="rating" value="5" v-model="userpoin" /><label for="star5"
+                        >5 stars</label
+                      >
+                      <input type="radio" id="star4" name="rating" value="4" v-model="userpoin" /><label for="star4">4 stars</label> <input type="radio" id="star3" name="rating" value="3" v-model="userpoin" /><label for="star3"
+                        >3 stars</label
+                      >
+                      <input type="radio" id="star2" name="rating" value="2" v-model="userpoin" /><label for="star2">2 stars</label> <input type="radio" id="star1" name="rating" value="1" v-model="userpoin" /><label for="star1"
+                        >1 star</label
+                      >
+                    </fieldset>
                   </div>
                   <div class="col-4">
                     <label class="form-check-label" for="inlineRadio1">This anime Recomended? </label><br />
@@ -75,7 +52,7 @@
                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" v-model="review"></textarea>
                 </div>
               </form>
-              <button class="btn btn-primary" type="submit" @click.prevent="postReview">Post Review</button>
+              <button class="btn post-review" type="submit" @click.prevent="postReview">Post Review</button>
             </div>
           </div>
         </div>
@@ -133,6 +110,68 @@ export default {
 </script>
 
 <style>
+.post-review:hover {
+  background-color: #ff5722;
+  color: azure;
+}
+.btn {
+  border: none !important;
+}
+.rating {
+  float: left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  width: 1em;
+  padding: 0 0.1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 200%;
+  line-height: 1.2;
+  color: #ddd;
+  text-shadow: 1px 1px #bbb, 2px 2px #666;
+}
+
+.rating:not(:checked) > label:before {
+  content: "★ ";
+}
+
+.rating > input:checked ~ label {
+  color: #ff5722;
+  text-shadow: 1px 1px rgb(77, 77, 77), 2px 2px rgb(82, 82, 82);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: gold;
+  text-shadow: 1px 1px goldenrod, 2px 2px #b57340;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #ea0;
+  text-shadow: 1px 1px goldenrod, 2px 2px #b57340;
+}
+
+.rating > label:active {
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
 .write-review {
   min-height: 100vh;
 }

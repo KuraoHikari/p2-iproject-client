@@ -61,6 +61,7 @@ body {
   padding-top: 10%;
   padding-bottom: 20%;
   color: #fff;
+
   height: 600px;
 }
 .anime {
@@ -69,7 +70,7 @@ body {
 }
 .jumbotron-tag p {
   font-size: 32px;
-  text-shadow: 2px 1px #474747;
+  text-shadow: 2px 2px 2px #000000;
 }
 .form-login {
   height: 900px;

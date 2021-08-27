@@ -73,7 +73,7 @@ export default {
         .dispatch("register", { email: this.email, password: this.password, username: this.username })
         .then((res) => {
           this.$router.push("/login");
-          successHandler("Success reqistered\n " + res.data.email + "\n now you can register");
+          successHandler("Success reqistered\n " + res.data.email + "\n now you can Login");
         })
         .catch((err) => {
           errorHandler(err);

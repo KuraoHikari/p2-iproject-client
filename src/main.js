@@ -8,7 +8,7 @@ Vue.config.productionTip = false;
 Vue.use(
   new VueSocketIO({
     debug: true,
-    connection: "http://localhost:4000",
+    connection: "https://rate-your-anime.herokuapp.com",
   })
 );
 new Vue({

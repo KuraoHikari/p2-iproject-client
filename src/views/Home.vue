@@ -2,7 +2,7 @@
   <div class="home">
     <!-- Banner Home -->
     <div class="container-fluid banner shadow-sm">
-      <div class="">
+      <div class="banner-block">
         <div class="row" v-if="!this.$store.state.isLogin">
           <div class="col-lg-4 anime">アニメ</div>
           <div class="col-lg-8 jumbotron-tag">
@@ -100,7 +100,7 @@ export default {
   color: #8a8a8a;
 }
 .quote {
-  text-shadow: 2px 2px #5c5c5c;
+  text-shadow: 2px 2px 2px #000000;
   display: inline-block;
   width: 600px;
   margin: 1em;
